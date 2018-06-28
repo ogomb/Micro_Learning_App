@@ -17,3 +17,6 @@ end
 get '/signup' do
     erb :sign_up
 end
+get '/login' do
+    erb :login
+end
