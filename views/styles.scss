@@ -1,9 +1,35 @@
-body {
-    font-family : 'Josefin Slab'; 
-    font-size : 17px; 
+* { 
+    margin:0; 
+    padding:0; 
+    box-sizing:border-box; 
+}
+body, html {
+    height: 100%;
+}
+.bgimg {
+    height: 100%;
     background-image: url("images/catchy.png");
     background-repeat : no-repeat;
     background-position-x: 50%;
-    background-position-y: -190%;
-    background-size: 601px 163px;
+    background-position-y: 50%;
+    background-size: 600px 180px;
 }
+
+.Home {
+    font-family : 'Josefin Slab'; 
+    font-size : 17px; 
+}
+
+.Home .lander {
+    padding: 80px 0;
+    text-align: center;
+  }
+  
+  .Home .lander h1 {
+      font-family: "Amatic SC";
+      font-style: normal;
+      font-variant: normal;
+      font-weight: bold;
+  }
+  
+ 
