@@ -13,3 +13,7 @@ get('/styles.css'){ scss :styles }
 get '/' do
     erb :home
 end
+
+get '/signup' do
+    erb :sign_up
+end
