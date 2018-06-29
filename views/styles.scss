@@ -51,4 +51,13 @@ body, html {
     color: #999;
   }
   
- 
+@media all and (min-width: 480px) {
+    .login {
+      padding: 60px 0;
+    }
+  
+    .login form {
+      margin: 0 auto;
+      max-width: 320px;
+    }
+  }
