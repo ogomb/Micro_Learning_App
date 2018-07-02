@@ -8,6 +8,7 @@ class MyApp < Sinatra::Application
 
     configure do
         env = ENV['RACK_ENV']
+        DB = Sequel.connect(YAML.load(File.open('database.yml'))[env])
         Dir[File.join(File.dirname(__FILE__), 'db', '*.rb')].each { |model| require model }
     end
 end
