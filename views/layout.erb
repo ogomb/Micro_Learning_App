@@ -11,6 +11,23 @@
     <title><%= @title %></title>
   </head>
   <body>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">Micro Learner</a>
+        </div>
+        <div class="pull-right">
+          <ul class="nav navbar-nav">
+            <% if @session %>
+              <li><a href="/logout">Log Out</a></li>
+            <% else %>
+              <li><a href="/signup">Sign Up</a></li>
+              <li><a href="/login">Login</a></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </nav>
         <%= yield %>
   </body>
 </html>
