@@ -1,4 +1,5 @@
 require 'sinatra'
+require 'sinatra/flash'
 require 'sequel'
 require 'digest'
 require 'yaml'
@@ -30,10 +31,30 @@ get '/signup/?' do
 end
 
 post '/signup/?' do
+  password = params[:password].strip
+  confirm_password = params[:confirm_password].strip
   user = User.new(name: params[:name], email: params[:email])
+  unless user.valid?
+    flash[:notice] = if user.errors[:name]
+                       user.errors[:name][0]
+                     else
+                       user.errors[:email][0]
+                     end
+    redirect uri 'signup'
+  end
+  if password != confirm_password
+    flash[:notice] = "Passwords don't match"
+    redirect uri 'signup'
+  end
+
   user.password = user.hash_password(params[:password])
+  begin
   user.save
   redirect '/login'
+  rescue StandardError => e
+    flash[:notice] = 'Similar user-name or email exists'
+    redirect uri 'signup'
+  end
 end
 
 get '/login/?' do
@@ -47,16 +68,12 @@ end
 
 post '/login/?' do
   user = User.first(email: params[:email])
-  if user.test_password(params[:password], user.password )
+  if !user.nil? and user.test_password(params[:password], user.password )
     session[:user_id] = user.id
     redirect '/'
   else
-    @error = 'Invalid login credentials'
-    erb :error
+    flash[:notice] = 'Invalid login credentials'
+    redirect uri 'login'
   end
 end
 
-get '/logout' do
-  session[:user_id] = nil
-  redirect '/login'
-end
