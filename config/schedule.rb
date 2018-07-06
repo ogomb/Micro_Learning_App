@@ -21,6 +21,6 @@
 
 # set :output, { error: 'error.log', standard: 'cron.log' }
 
-every 1.minute do
-   rake "email_users"
-  end
+every 1.day do
+  rake "email_users"
+end
