@@ -4,6 +4,7 @@ require_relative './user'
 class News_Api
   @@news_api = News.new ('77cf0019ddac41acb887527a1c06111c')
 
+  # fetch all categories from an endpoint
   def fetch_all_categories
     pages = 1 + rand(5)
     everything = @@news_api.get_everything(
@@ -15,14 +16,17 @@ class News_Api
   )
   end
 
+  # fetch specific category
   def fetch_specific_category(category)
     specific_category = @@news_api.get_sources(language: 'en', sortBy: 'relevancy', sources:category)
   end
 
-  def get_emails 
+  # get user emails
+  def get_emails
     users_email = User.pluck(:email)
   end
 
+  # get random content to send to the user
   def get_random_content
     random_content = ""
     fetch_all_categories.each do |link_to_send|
