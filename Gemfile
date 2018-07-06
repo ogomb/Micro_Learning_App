@@ -4,10 +4,16 @@ source "https://rubygems.org"
 
 git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
 
-gem 'bcrypt'
-gem 'pry'
-gem 'mysql2'
-gem 'news-api'
-gem 'sequel'
 gem 'sinatra'
-gem 'sinatra-flash'
+gem 'activerecord', :require => 'active_record'
+gem 'sinatra-activerecord', :require => 'sinatra/activerecord'
+gem 'rake'
+gem 'require_all'
+gem 'pg'
+gem 'shotgun'
+gem 'pry'
+gem 'bcrypt'
+gem 'news-api'
+gem 'whenever'
+gem 'sendgrid-ruby'
+gem 'sinatra-flash', :require => 'sinatra/flash'
