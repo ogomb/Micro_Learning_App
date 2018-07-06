@@ -4,9 +4,12 @@ Micro-Learning app is a responsive web application that sends you one page per d
 Technologies Used
 Ruby 
 Sinatra
-Mysql
+Postgres
+Send-grid
 Sequel
+Rake
 Bundle
+Bcrypt
 
 # Getting Started
 Ensure that you have Ruby, Mysql Bundle installed.
@@ -20,10 +23,12 @@ $ cd Micro-Learning-Ap
 Install gems by running
 
 $ bundle install
-Update the database configuration in database.yml with your correct prefferred settings. Make sure you have the database running.
 
-Navigate to the root folder and Run
-`sequel -m db/migrations/ mysql2://username:password@localhost/micro_learning`
-to run migrations. username and password are your login details
+Create database 
+`rake db:create`
 
-Start the application by running: `ruby config.ru`
+Run Migrations
+`rake db:migrate`
+
+
+Start the application by running: `rackup`
