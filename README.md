@@ -19,7 +19,8 @@ Clone the application:
 $ git clone https://github.com/ogomb/Micro_Learning_App.git
 Change directory to Micro-Learning-App
 
-$ cd Micro-Learning-Ap
+$ cd Micro-Learning-App
+
 Install gems by running
 
 $ bundle install
