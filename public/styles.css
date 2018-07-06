@@ -1,7 +1,7 @@
 * { 
     margin:0; 
     padding:0; 
-    box-sizing:border-box; 
+    box-sizing:border-box;
 }
 body, html {
     font-family : 'Josefin Slab'; 
@@ -61,3 +61,33 @@ body, html {
       max-width: 320px;
     }
   }
+
+@media ( min-width: 768px ) {
+    .grid-divider {
+        position: relative;
+        padding: 0;
+    }
+    .grid-divider>[class*='col-'] {
+        position: static;
+    }
+    .grid-divider>[class*='col-']:nth-child(n+2):before {
+        content: "";
+        border-left: 1px solid #DDD;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+    }
+    .col-padding {
+        padding: 0 15px;
+    }
+}
+
+.button-wrapper #links{
+    margin-bottom:10px;
+}
+
+#right {
+    height: 100%;
+    overflow-y: scroll;
+}
+
