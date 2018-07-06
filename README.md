@@ -17,10 +17,10 @@ Ensure that you have Ruby, Mysql Bundle installed.
 
 Clone the application:
 
-$ git clone https://github.com/ogomb/Micro_Learning_App.git
+git clone https://github.com/ogomb/Micro_Learning_App.git
 Change directory to Micro-Learning-App
 
-$ cd Micro-Learning-App
+cd Micro-Learning-App
 
 Install gems by running
 
