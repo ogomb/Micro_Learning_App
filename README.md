@@ -23,7 +23,7 @@ $ cd Micro-Learning-App
 
 Install gems by running
 
-$ bundle install
+`bundle install`
 
 Create database 
 `rake db:create`
