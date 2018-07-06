@@ -1,0 +1,6 @@
+development:
+    adapter: 'postgresql'
+    host: 'localhost'
+    database: 'micro_learning'
+    user: 'postgres'
+    password: ''

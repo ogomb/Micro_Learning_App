@@ -1,10 +1,6 @@
-require 'sinatra/base'
-require 'bundler/setup'
+require 'active_record'
+require_relative 'app/controllers/application_controller'
 
-Bundler.require
+use Rack::MethodOverride
 
-ENV['RACK_ENV'] = 'development'
-
-require File.join(File.dirname(__FILE__), 'app.rb')
-
-MyApp .start!
+run ApplicationController
