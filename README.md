@@ -10,6 +10,7 @@ Sequel
 Rake
 Bundle
 Bcrypt
+Whenever
 
 # Getting Started
 Ensure that you have Ruby, Mysql Bundle installed.
