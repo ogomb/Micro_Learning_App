@@ -4,15 +4,15 @@ Micro-Learning app is a responsive web application that sends you one page per d
 Application is hosted in heroku https://micro-learning-challenge.herokuapp.com/login
 
 ## Technologies Used
-- Ruby 
-- Sinatra
-- Postgres
-- Send-grid
-- Sequel
-- Rake
-- Bundle
-- Bcrypt
-- Whenever
+- `Ruby`
+- `Sinatra`
+- `Postgres`
+- `Send-grid`
+- `Sequel`
+- `Rake`
+- `Bundle`
+- `Bcrypt`
+- `Whenever`
 
 ## Getting Started
 Ensure that you have `Ruby and Postgres` installed.
