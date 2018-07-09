@@ -19,7 +19,11 @@ class News_Api
   # fetch specific category
   def fetch_specific_category(category)
     category = category.strip
-    specific_category = @@news_api.get_top_headlines(language: 'en', category:category)
+    specific_category = @@news_api.get_top_headlines(
+        language: 'en',
+        category:category,
+        country: 'us'
+    )
   end
 
   # get user emails
