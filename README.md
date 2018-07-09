@@ -20,17 +20,12 @@ Ensure that you have `Ruby and Postgres` installed.
 - Clone the application:
       `git clone https://github.com/ogomb/Micro_Learning_App.git`
       
-- Change directory to Micro-Learning-App
+- Change directory to Micro-Learning-App  `cd Micro-Learning-App`
 
-`cd Micro-Learning-App`
-
-- Install gems by running
-
-   `bundle install`
+- Install gems by running   `bundle install`
 
 - Create database  `rake db:create`
 
-- Run Migrations
-  `rake db:migrate`
+- Run Migrations   `rake db:migrate`
 
 -Start the application by running: `rackup`
