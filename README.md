@@ -28,4 +28,4 @@ Ensure that you have `Ruby and Postgres` installed.
 
 - Run Migrations   `rake db:migrate`
 
--Start the application by running: `rackup`
+- Start the application by running: `rackup`
