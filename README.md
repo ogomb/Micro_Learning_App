@@ -8,7 +8,7 @@ Application is hosted in heroku https://micro-learning-challenge.herokuapp.com/l
 - `Sinatra`
 - `Postgres`
 - `Send-grid`
-- `Sequel`
+- `Active Record`
 - `Rake`
 - `Bundle`
 - `Bcrypt`
