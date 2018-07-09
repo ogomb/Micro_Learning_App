@@ -25,8 +25,8 @@ class ApplicationController < Sinatra::Base
   get '/home' do
     @session = session[:user_id]
     news = News_Api.new
-    @all_categories = news.fetch_all_categories
-    erb :home
+    all_categories = news.fetch_all_categories
+    erb :home, locals: { all_categories: all_categories }
   end
 
   get '/signup/?' do
@@ -86,10 +86,11 @@ class ApplicationController < Sinatra::Base
   end
 
   post '/category' do
+    @session = session[:user_id]
     category = params[:cat].downcase
     news = News_Api.new
     fetched = news.fetch_specific_category category
-    redirect '/home', fetched
+    erb :home, locals: { all_categories: fetched }
   end
 
   get '/logout/?' do
