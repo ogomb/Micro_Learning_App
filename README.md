@@ -1,6 +1,8 @@
 # Micro_Learning_App
 Micro-Learning app is a responsive web application that sends you one page per day about something you want to learn. Could be: a new Language, a random Wikipedia page, React documentation, a page from the CIA World Factbook, anything!
 
+Application is hosted in heroku https://micro-learning-challenge.herokuapp.com/login
+
 ## Technologies Used
 Ruby 
 Sinatra
@@ -26,8 +28,7 @@ Ensure that you have `Ruby and Postgres` installed.
 
    `bundle install`
 
-- Create database 
- `rake db:create`
+- Create database  `rake db:create`
 
 - Run Migrations
   `rake db:migrate`
