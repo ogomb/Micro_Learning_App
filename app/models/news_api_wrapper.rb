@@ -33,11 +33,12 @@ class News_Api
 
   # get random content to send to the user
   def get_random_content
-    random_content = ""
+    random_content = []
     fetch_all_categories.each do |link_to_send|
       random_content = link_to_send.url
+
     end
-    random_content
+    random_content.sample
   end
 end
 

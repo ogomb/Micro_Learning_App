@@ -8,13 +8,13 @@ include SendGrid
 # a rake task to send emails to users
 task :email_users do
   news = News_Api.new
-  content = news.get_random_content
+  mail_content = news.get_random_content
 
   news.get_emails.each do |email|
     from = Email.new(email: 'test@example.com')
     to = Email.new(email: email)
     subject = 'Learn new Stuff today'
-    content = Content.new(type: 'text/plain', value: content )
+    content = Content.new(type: 'text/plain', value: mail_content)
     mail = Mail.new(from, subject, to, content)
 
     sg = SendGrid::API.new(api_key: ENV['SENDGRID_API_KEY'])
