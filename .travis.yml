@@ -5,4 +5,4 @@ services:
 before_script:
   - bundle exec rake db:test:prepare
 script:
-  - bundle exec rspec
+  - bundle exec rspec spec/*
