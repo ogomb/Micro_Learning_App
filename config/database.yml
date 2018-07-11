@@ -4,6 +4,12 @@ development:
     database: 'micro_learning'
     user: 'postgres'
     password: ''
+test:
+    adapter: 'postgresql'
+    host: 'localhost'
+    database: 'micro_learning_test'
+    user: 'postgres'
+    password: ''
 
 production:
   adapter: 'postgresql'
