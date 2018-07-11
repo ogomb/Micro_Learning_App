@@ -1,5 +1,8 @@
-require 'sinatra/activerecord/rake'
+require 'bundler'
+Bundler.require
+
 require 'sinatra/activerecord'
+require 'sinatra/activerecord/rake'
 require_relative 'app/controllers/application_controller'
 require_relative 'app/models/news_api_wrapper'
 require 'sendgrid-ruby'
