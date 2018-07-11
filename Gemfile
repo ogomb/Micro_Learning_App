@@ -17,3 +17,11 @@ gem 'news-api'
 gem 'whenever'
 gem 'sendgrid-ruby'
 gem 'sinatra-flash', :require => 'sinatra/flash'
+
+group :test do
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'rspec'
+  gem 'rack-test'
+  gem 'simplecov'
+end
