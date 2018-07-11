@@ -3,6 +3,6 @@ rvm: 2.5.1
 services:
   - postgresql
 before_script:
-  - rake db:test:prepare
+  - bundle exec rake db:test:prepare
 script:
   - bundle exec rspec
