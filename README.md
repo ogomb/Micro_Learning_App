@@ -28,4 +28,6 @@ Ensure that you have `Ruby and Postgres` installed.
 
 - Run Migrations   `rake db:migrate`
 
+- Prepare the test database`rake db:test:prepare`
+
 - Start the application by running: `rackup`
