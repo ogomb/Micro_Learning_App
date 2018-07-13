@@ -2,33 +2,39 @@
   <div class="row grid-divider">
     <div class="col-sm-2">
       <div class="col-padding button-wrapper">
+
         <form action="/category" method="post">
-        <input id="links" class="form-control input-lg" name="cat" value="Technology" type="submit"/>
-        <input id="links" class="form-control input-lg" name="cat" type="submit" value="Entertainment"/>
-        <input id="links" class="form-control input-lg" name="cat" value="Health" type="submit"/>
-        <input id="links" class="form-control input-lg" name="cat" value="Sports" type="submit"/>
-        <input id="links" class="form-control input-lg" name="cat" value="Business" type="submit"/>
+          <% if all_categories %>
+            <% all_categories.each do |single_category| %>
+             <input id="links" class="form-control input-lg" name="f" value="<%= single_category %>" type="submit"/>
+            <% end %>
+          <% end %>
+        </form>
+
+        <form action="/add_category" method="get">
+          <input id="links" class="form-control input-lg" name="add_cat" value="EDIT CATEGORIES" type="submit"/>
         </form>
       </div>
     </div>
-
     <div class="col-sm-8" id="right">
       <div class="col-padding">
         <ul class="list-group list-group-flush">
-        <% all_categories.each do |category| %>
-            <li class="list-group-item">
-              <div class="media">
-                <div class="media-left media-middle">
-                    <img style="height:120px; width:120px; border-radius: 50%" src=<%=category.urlToImage %>>
-                </div>
-                <div class="media-body">
-                  <h4 class="media-heading"><%= category.name %></h4>
-                  <p><%= category.title %>.</p>
-                  <a class="pull-right" href=<%= category.url %>>Read More</a>
-                </div>
-              </div>
-            </li>
-        <% end %>
+          <% if fetched %>
+              <% fetched.each do |category| %>
+                  <li class="list-group-item">
+                    <div class="media">
+                      <div class="media-left media-middle">
+                          <img style="height:120px; width:120px; border-radius: 50%" src=<%=category.urlToImage %>>
+                      </div>
+                      <div class="media-body">
+                        <h4 class="media-heading"><%= category.name %></h4>
+                        <p><%= category.title %>.</p>
+                        <a class="pull-right" href=<%= category.url %>>Read More</a>
+                      </div>
+                    </div>
+                  </li>
+              <% end %>
+            <% end %>
         </ul>
       </div>
      </div>

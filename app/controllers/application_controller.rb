@@ -1,10 +1,14 @@
 require 'sinatra'
 require 'sinatra/flash'
-require_relative '../models/user'
+require_relative '../../app/models/user'
+require_relative '../../app/models/category'
+require_relative '../../app/models/user_category'
 require_relative '../models/news_api_wrapper'
+require 'sinatra/form_helpers'
 
 class ApplicationController < Sinatra::Base
   register Sinatra::Flash
+  helpers Sinatra::FormHelpers
 
   configure do
     set :public_folder, 'public'
@@ -21,12 +25,14 @@ class ApplicationController < Sinatra::Base
       redirect '/login'
     end
   end
-
   get '/home' do
     @session = session[:user_id]
+    user = User.find_by(id: @session)
+    user_cats = user.categories.each.map {|cat| cat.name }
+    category = user_cats.first
     news = News_Api.new
-    all_categories = news.fetch_all_categories
-    erb :home, locals: { all_categories: all_categories }
+    fetched = news.fetch_specific_category category
+    erb :home, locals: {all_categories: user_cats, fetched: fetched}
   end
 
   get '/signup/?' do
@@ -78,7 +84,7 @@ class ApplicationController < Sinatra::Base
     user = User.find_by(email: params[:email])
     if !user.nil? and user.test_password(params[:password], user.password )
       session[:user_id] = user.id
-      redirect '/home'
+      redirect  uri '/add_category'
     else
       flash[:notice] = 'Invalid login credentials'
       redirect uri 'login'
@@ -87,14 +93,41 @@ class ApplicationController < Sinatra::Base
 
   post '/category' do
     @session = session[:user_id]
-    category = params[:cat].downcase
+    category = params[:f]
     news = News_Api.new
     fetched = news.fetch_specific_category category
-    erb :home, locals: { all_categories: fetched }
+    user = User.find_by(id: @session)
+    user_cats = user.categories.each.map {|cat| cat.name }
+    erb  :home, locals: { fetched: fetched, all_categories: user_cats }
+  end
+
+  get '/add_category' do
+    @session = session[:user_id]
+    all_categories = Category.all
+    mapped = all_categories.each.map { |category| category.name }
+    erb :add_cat, locals: { cats: mapped }
+  end
+
+  post '/add_category' do
+    @session = session[:user_id]
+    preferences = params[:category]
+    if preferences
+      preferences = params[:category]['choose']
+      user = User.find_by(id: @session)
+      unless preferences.empty?
+        preferences.each do |single_preference|
+          category = Category.find_by(name: single_preference)
+          user.categories << category unless user.categories.include? category
+        end
+      end
+      redirect uri :home
+    else
+      redirect uri '/add_category'
+    end
   end
 
   get '/logout/?' do
     session[:user_id] = nil
-    redirect '/login'
+    redirect uri '/login'
   end
 end

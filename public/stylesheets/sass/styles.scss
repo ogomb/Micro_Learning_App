@@ -1,0 +1,125 @@
+* {
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+body, html {
+  font-family : 'Josefin Slab';
+  font-size : 19px;
+  height: 100%;
+}
+.bgimg {
+  height: 100%;
+  background-image: url("images/catchy.png");
+  background-repeat : no-repeat;
+  background-position-x: 50%;
+  background-position-y: 50%;
+  background-size: 600px 180px;
+}
+
+.Home {
+  font-family : 'Josefin Slab';
+  font-size : 17px;
+}
+
+.Home .lander {
+  padding: 80px 0;
+  text-align: center;
+}
+
+.Home .lander h1 {
+  font-family: "Amatic SC";
+  font-style: normal;
+  font-variant: normal;
+  font-weight: bold;
+}
+
+@media all and (min-width: 480px) {
+  .Signup {
+    padding: 60px 0;
+  }
+
+  .Signup form {
+    margin: 0 auto;
+    max-width: 320px;
+  }
+}
+
+.Signup form span.help-block {
+  font-size: 14px;
+  padding-bottom: 10px;
+  color: #999;
+}
+
+@media all and (min-width: 480px) {
+  .login {
+    padding: 60px 0;
+  }
+
+  .login form {
+    margin: 0 auto;
+    max-width: 320px;
+  }
+}
+
+@media ( min-width: 768px ) {
+  .grid-divider {
+    position: relative;
+    padding: 0;
+  }
+  .grid-divider>[class*='col-'] {
+    position: static;
+  }
+  .grid-divider>[class*='col-']:nth-child(n+2):before {
+    content: "";
+    border-left: 1px solid #DDD;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+  }
+  .col-padding {
+    padding: 0 15px;
+  }
+}
+
+.button-wrapper #links{
+  margin-bottom:10px;
+}
+
+#right {
+  height: 100%;
+  overflow-y: scroll;
+}
+
+input[type="checkbox"]{
+  visibility: hidden;
+}
+.checkboxes {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 13px;
+  label {
+    position: relative;
+    display: block;
+    max-width: 200px;
+    &:after {
+      content: '';
+      position: absolute;
+      margin-left: -20%;
+      top: 5px;
+      display: block;
+      background-color: white;
+      border: 1px solid black;
+      height: 15px;
+      width: 15px;
+    }
+  }
+
+  input:checked + label:after{
+    background-color: darkgray;
+  }
+}
+
+
+
+

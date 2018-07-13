@@ -1,0 +1,16 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-3 col-sm-offset-4">
+      <h2>CHOOSE A CATEGORY</h2>
+    </div>
+    <div class="col-sm-5 col-sm-offset-3">
+      <%= form('/add_category', :post) %>
+      <div class="checkboxes">
+         <%= checkbox(:category, :choose, cats) %>
+      </div>
+        <div class="col-sm-4 col-sm-offset-4">
+         <input class="form-control btn btn-primary" type="submit" value="GO">
+        </div>
+    </div>
+  </div>
+</div>

@@ -5,7 +5,7 @@ source "https://rubygems.org"
 git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
 
 gem 'sinatra'
-gem 'activerecord', :require => 'active_record'
+gem 'activerecord'
 gem 'sinatra-activerecord', :require => 'sinatra/activerecord'
 gem 'rake'
 gem 'require_all'
@@ -15,8 +15,10 @@ gem 'pry'
 gem 'bcrypt'
 gem 'news-api'
 gem 'whenever'
+gem 'sass'
 gem 'sendgrid-ruby'
 gem 'sinatra-flash', :require => 'sinatra/flash'
+gem 'sinatra-formhelpers-ng'
 
 group :test do
   gem 'capybara'

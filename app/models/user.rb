@@ -6,10 +6,13 @@ class User < ActiveRecord::Base
 
   validates :name,
             presence: true
-  validates :email,
-            format: { with: EMAIL }
-  # has_secure_password
-  has_many :categories
+
+  validates :email, format: {
+      with: EMAIL,
+      message: "Email format not correct)"}
+
+  has_many :user_categories
+  has_many :categories, through: :user_categories
 
   # hash a password
   def hash_password(password)
