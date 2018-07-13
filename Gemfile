@@ -22,6 +22,7 @@ gem 'sinatra-formhelpers-ng'
 
 group :test do
   gem 'capybara'
+  gem 'coveralls'
   gem 'database_cleaner'
   gem 'rspec'
   gem 'rack-test'
