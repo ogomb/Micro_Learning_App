@@ -20,6 +20,7 @@ gem 'sinatra-flash', :require => 'sinatra/flash'
 
 group :test do
   gem 'capybara'
+  gem 'coveralls'
   gem 'database_cleaner'
   gem 'rspec'
   gem 'rack-test'
