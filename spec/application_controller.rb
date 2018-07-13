@@ -30,7 +30,7 @@ module MicroLearningApp
       post '/login', {password: 'ereqreq', email: 'mbogolew@gmail.com'}
       expect(last_response).to be_redirect
       follow_redirect!
-      expect(last_request.path).to eq('/home')
+      expect(last_request.path).to eq('/add_category')
     end
 
     it 'should redirect to logout' do

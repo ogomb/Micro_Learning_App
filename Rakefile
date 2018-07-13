@@ -8,7 +8,7 @@ require_relative 'app/models/news_api_wrapper'
 require 'sendgrid-ruby'
 include SendGrid
 
-a rake task to send emails to users
+# a rake task to send emails to users
 task :email_users do
   news = News_Api.new
   mail_content = news.get_random_content
