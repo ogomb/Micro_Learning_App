@@ -3,7 +3,7 @@ require 'sinatra/flash'
 require_relative '../../app/models/user'
 require_relative '../../app/models/category'
 require_relative '../../app/models/user_category'
-require_relative '../models/news_api_wrapper'
+require_relative 'news_api_wrapper'
 require 'sinatra/form_helpers'
 
 class ApplicationController < Sinatra::Base

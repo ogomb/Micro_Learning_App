@@ -1,5 +1,5 @@
 require 'news-api'
-require_relative './user'
+require_relative '../../app/models/user'
 
 class News_Api
   @@news_api = News.new ('77cf0019ddac41acb887527a1c06111c')
