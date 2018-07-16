@@ -6,6 +6,7 @@ require_relative '../../app/models/user_category'
 require_relative 'news_api_wrapper'
 require 'sinatra/form_helpers'
 
+
 class ApplicationController < Sinatra::Base
   register Sinatra::Flash
   helpers Sinatra::FormHelpers
@@ -49,11 +50,7 @@ class ApplicationController < Sinatra::Base
     confirm_password = params[:confirm_password].strip
     user = User.new(name: params[:name], email: params[:email])
     unless user.valid?
-      flash[:notice] = if user.errors.messages
-                         user.errors.messages[:name][0]
-                       else
-                         user.errors.messages[:email][0]
-                       end
+      flash[:notice] = "Verify email or username"
       redirect uri 'signup'
     end
     if password != confirm_password
@@ -64,7 +61,9 @@ class ApplicationController < Sinatra::Base
     user.password = user.hash_password(params[:password])
     begin
       user.save
-      redirect '/login'
+      users = User.find_by(email: params[:email])
+      session[:user_id] = users.id
+      redirect '/add_category'
     rescue StandardError => e
       flash[:notice] = 'Similar user-name or email exists'
       redirect uri 'signup'
@@ -129,5 +128,10 @@ class ApplicationController < Sinatra::Base
   get '/logout/?' do
     session[:user_id] = nil
     redirect uri '/login'
+  end
+
+  not_found do
+    status 404
+    erb :oops
   end
 end

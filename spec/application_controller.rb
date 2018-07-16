@@ -19,11 +19,11 @@ module MicroLearningApp
       expect(last_response.status).to eq(200)
     end
 
-    it 'should redirect to login after signup' do
+    it 'should redirect to add category after signup' do
       post '/signup', {name: 'esad',password: 'ereqreq', email: 'mbogolew@gmail.com',confirm_password: 'ereqreq'}
       expect(last_response).to be_redirect
       follow_redirect!
-      expect(last_request.path).to eq('/login')
+      expect(last_request.path).to eq('/add_category')
     end
 
     it 'should redirect to home after login' do
