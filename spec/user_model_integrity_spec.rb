@@ -1,7 +1,6 @@
 require_relative '../app/models/user'
 require_relative '../spec/support/db'
 
-
 module MicroLearning
   RSpec.describe 'User Model' do
     let(:user_model) {
