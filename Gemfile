@@ -19,6 +19,7 @@ gem 'sass'
 gem 'sendgrid-ruby'
 gem 'sinatra-flash', :require => 'sinatra/flash'
 gem 'sinatra-formhelpers-ng'
+gem "shoulda-matchers", require: false
 
 group :test do
   gem 'capybara'
@@ -27,4 +28,5 @@ group :test do
   gem 'rspec'
   gem 'rack-test'
   gem 'simplecov'
+  gem 'database_cleaner'
 end

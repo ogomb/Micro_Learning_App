@@ -1,3 +1,5 @@
+require 'sinatra/activerecord'
+
 class UserCategory < ActiveRecord::Base
   belongs_to :user
   belongs_to :category

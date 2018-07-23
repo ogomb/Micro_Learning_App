@@ -1,5 +1,6 @@
 require 'rack/test'
 require 'rspec'
+require 'pry'
 require_relative '../app/controllers/application_controller'
 
 module MicroLearningApp
@@ -20,10 +21,20 @@ module MicroLearningApp
     end
 
     it 'should redirect to add category after signup' do
-      post '/signup', {name: 'esad',password: 'ereqreq', email: 'mbogolew@gmail.com',confirm_password: 'ereqreq'}
+      before_count = User.count
+
+      post '/signup',  { name: 'test user', password: 'testuser', email: 'testuser@gmail.com', confirm_password: 'testuser'}
+      expect(User.count).not_to eq(before_count)
       expect(last_response).to be_redirect
       follow_redirect!
       expect(last_request.path).to eq('/add_category')
+    end
+
+    it 'should add record to database after signup' do
+      before_count = User.count
+      post '/signup',  { name: 'test user', password: 'testuser', email: 'testuser@gmail.com', confirm_password: 'testuser'}
+
+      expect(User.count).not_to eq(before_count)
     end
 
     it 'should redirect to home after login' do
