@@ -83,6 +83,9 @@ class ApplicationController < Sinatra::Base
     user = User.find_by(email: params[:email])
     if !user.nil? and user.test_password(params[:password], user.password )
       session[:user_id] = user.id
+      unless user.categories.empty?
+        redirect uri 'home'
+      end
       redirect  uri '/add_category'
     else
       flash[:notice] = 'Invalid login credentials'
@@ -113,6 +116,7 @@ class ApplicationController < Sinatra::Base
     if preferences
       preferences = params[:category]['choose']
       user = User.find_by(id: @session)
+      user.categories.clear
       unless preferences.empty?
         preferences.each do |single_preference|
           category = Category.find_by(name: single_preference)

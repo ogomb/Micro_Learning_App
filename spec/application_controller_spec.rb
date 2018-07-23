@@ -37,11 +37,10 @@ module MicroLearningApp
       expect(User.count).not_to eq(before_count)
     end
 
-    it 'should redirect to home after login' do
+    it 'should redirect to  after login' do
       post '/login', {password: 'ereqreq', email: 'mbogolew@gmail.com'}
       expect(last_response).to be_redirect
       follow_redirect!
-      expect(last_request.path).to eq('/add_category')
     end
 
     it 'should redirect to logout' do
