@@ -31,7 +31,7 @@ Bcrypt
 Whenever
 ```
 
-### setting up the application
+### Setting up the application
 Clone the application:
 ```
 git clone https://github.com/ogomb/Micro_Learning_App.git
@@ -62,8 +62,10 @@ Prepare the test database
 ```
 rake db:test:prepare
 ```
-Start the application by running: 
-```rackup
+Start the application by running:
+
+```
+rackup
 ```
 
 ## Running the tests
@@ -76,11 +78,4 @@ bundle exec rspec spec/*
 ## Deployment
 
 The application is running on [heroku](https://micro-learning-challenge.herokuapp.com/login)
-
-
-
-
-
-
-
 
