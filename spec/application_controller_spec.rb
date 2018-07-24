@@ -37,6 +37,12 @@ module MicroLearningApp
       expect(User.count).not_to eq(before_count)
     end
 
+    it 'should not add record to database after login if incorrect data is given' do
+      post '/login',  { password: 'testuser', email: 'testuser3@gmail.com'}
+
+      expect(User.count).to eq(0)
+    end
+
     it 'should redirect to  after login' do
       post '/login', {password: 'ereqreq', email: 'mbogolew@gmail.com'}
       expect(last_response).to be_redirect
