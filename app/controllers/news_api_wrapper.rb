@@ -6,13 +6,12 @@ class News_Api
 
   # fetch all categories from an endpoint
   def fetch_all_categories
-    pages = 1 + rand(5)
     everything = @@news_api.get_everything(
       language: 'en',
       sources:'techcrunch,talksport,the-next-web,
                 national-geographic, al-jazeera-english,
                 crypto-coins-news',
-      page: pages
+      page: 1
   )
   end
 
@@ -22,7 +21,8 @@ class News_Api
     specific_category = @@news_api.get_top_headlines(
         language: 'en',
         category:category,
-        country: 'us'
+        country: 'us',
+        sortBy: 'relevancy'
     )
   end
 

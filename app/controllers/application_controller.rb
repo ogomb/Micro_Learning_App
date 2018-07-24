@@ -98,6 +98,7 @@ class ApplicationController < Sinatra::Base
     category = params[:f]
     news = News_Api.new
     fetched = news.fetch_specific_category category
+    flash[:notification] = saveCurrentNews(fetched)
     user = User.find_by(id: @session)
     user_cats = user.categories.each.map {|cat| cat.name }
     erb  :home, locals: { fetched: fetched, all_categories: user_cats }
@@ -137,5 +138,32 @@ class ApplicationController < Sinatra::Base
   not_found do
     status 404
     erb :oops
+  end
+
+  def saveCurrentNews(fetched_category)
+    user_id = session[:user_id]
+    file_name = "#{user_id}-content.txt"
+    already_there = false
+    folder = File.expand_path("./tmp")
+    if File.file?(File.join(folder, file_name))
+      File.open(File.join(folder, file_name),"r+") do |f|
+        f.each_line do |line|
+          if line.strip == fetched_category[0].to_json.strip
+            already_there = false
+            return already_there
+          end
+        end
+        f.puts fetched_category[0].to_json if already_there == false
+         already_there = true
+        return already_there
+      end
+    else
+      File.open(File.join(folder, file_name), "a") do |f|
+        f.puts fetched_category[0].to_json
+      end
+      already_there = true
+      return already_there
+    end
+    already_there
   end
 end

@@ -1,4 +1,10 @@
 <div class="container-fluid">
+  <% if flash[:notification] %>
+    <div class="alert alert-info alert-dismissible" role="alert" id="info-alert">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+      <strong>You have new content to view :) </strong>
+    </div>
+    <% end %>
   <div class="row grid-divider">
     <div class="col-sm-2">
       <div class="col-padding button-wrapper">
@@ -40,3 +46,9 @@
      </div>
   </div>
 </div>
+
+<script>
+    $("#info-alert").fadeTo(3000, 500).slideUp(500, function(){
+        $("#info-alert").alert('close');
+    });
+</script>
