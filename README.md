@@ -23,7 +23,6 @@ Postgres
 Ruby
 Sinatra
 Postgres
-Send-grid
 Active Record
 Rake
 Bundle
