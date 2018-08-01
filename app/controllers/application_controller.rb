@@ -95,20 +95,23 @@ class ApplicationController < Sinatra::Base
 
   post '/category' do
     @session = session[:user_id]
+    user = User.find_by(id: @session)
     category = params[:f]
     news = News_Api.new
     fetched = news.fetch_specific_category category
     flash[:notification] = saveCurrentNews(fetched)
-    user = User.find_by(id: @session)
     user_cats = user.categories.each.map {|cat| cat.name }
     erb  :home, locals: { fetched: fetched, all_categories: user_cats }
   end
 
   get '/add_category' do
     @session = session[:user_id]
+    user = User.find_by(id: @session)
     all_categories = Category.all
     mapped = all_categories.each.map { |category| category.name }
-    erb :add_cat, locals: { cats: mapped }
+    user_categories = user.categories.each.map {|cat| cat.name}
+    cat_difference = mapped - user_categories
+    erb :add_cat, locals: { cats: cat_difference, user_cats: user_categories  }
   end
 
   post '/add_category' do
@@ -116,18 +119,26 @@ class ApplicationController < Sinatra::Base
     preferences = params[:category]
     if preferences
       preferences = params[:category]['choose']
-      user = User.find_by(id: @session)
-      user.categories.clear
+      preferences = preferences.kind_of?(Array) ? preferences : [preferences]
       unless preferences.empty?
         preferences.each do |single_preference|
-          category = Category.find_by(name: single_preference)
-          user.categories << category unless user.categories.include? category
+          add_categories(single_preference)
         end
       end
       redirect uri :home
     else
       redirect uri '/add_category'
     end
+  end
+
+  post '/delete_category' do
+    @session = session[:user_id]
+    user = User.find_by(id: @session)
+    cat_to_delete = params[:delete]
+    if cat_to_delete
+      user.categories.delete(Category.find_by(name: params[:delete]))
+    end
+    redirect uri '/add_category'
   end
 
   get '/logout/?' do
@@ -165,5 +176,11 @@ class ApplicationController < Sinatra::Base
       return already_there
     end
     already_there
+  end
+
+  def add_categories(single_preference)
+    user = User.find_by(id: @session)
+    category = Category.find_by(name: single_preference)
+    user.categories << category unless user.categories.include? category
   end
 end

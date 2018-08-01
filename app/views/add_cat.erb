@@ -1,16 +1,36 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-sm-3 col-sm-offset-4">
-      <h2>CHOOSE A CATEGORY</h2>
+      <h2>ADD A CATEGORY</h2>
     </div>
     <div class="col-sm-5 col-sm-offset-3">
       <%= form('/add_category', :post) %>
       <div class="checkboxes">
          <%= checkbox(:category, :choose, cats) %>
       </div>
+      <% if cats %>
         <div class="col-sm-4 col-sm-offset-4">
-         <input class="form-control btn btn-primary" type="submit" value="GO">
+         <input class="form-control btn btn-primary" type="submit" value="ADD CATEGORY">
         </div>
+        <% end %>
+    </form>
     </div>
   </div>
+  <% if user_cats %>
+  <div class="row">
+    <div class="col-sm-3 col-sm-offset-4">
+      <br/>
+    </div>
+    <div class="col-sm-8 col-sm-offset-1">
+          <% user_cats.each do |single_category| %>
+          <form action="/delete_category" method="post">
+            <div class="col-sm-2 col-sm-offset-1">
+              <input type="hidden" name="delete" value="<%= single_category %>"  />
+              <input id="delete" class="form-control btn-danger" value=" Remove <%= single_category %>" type="submit"/>
+            </div>
+          </form>
+          <% end %>
+        </div>
+  </div>
+  <% end %>
 </div>

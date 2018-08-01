@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid" xmlns="http://www.w3.org/1999/html">
   <% if flash[:notification] %>
     <div class="alert alert-info alert-dismissible" role="alert" id="info-alert">
       <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -12,7 +12,7 @@
         <form action="/category" method="post">
           <% if all_categories %>
             <% all_categories.each do |single_category| %>
-             <input id="links" class="form-control input-lg" name="f" value="<%= single_category %>" type="submit"/>
+                <input id="links" class="form-control input-lg" name="f" value="<%= single_category %>" type="submit"/>
             <% end %>
           <% end %>
         </form>
