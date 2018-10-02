@@ -76,5 +76,5 @@ bundle exec rspec spec/*
 
 ## Deployment
 
-The application is running on [heroku](https://micro-learning-challenge.herokuapp.com/login)
+The application is running on
 
